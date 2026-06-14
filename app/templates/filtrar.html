@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de alumnos</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static',
+          filename='css/style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Registros guardados</h1>
+
+    <table border="1">
+
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>DNI</th>
+            <th>Email</th>
+            <th>Idioma</th>
+            <th>Nivel</th>
+            <th>Turno</th>
+        </tr>
+
+        {% for alumno in registros %}
+
+        <tr>
+
+            <td>{{ alumno[0] }}</td>
+            <td>{{ alumno[1] }}</td>
+            <td>{{ alumno[2] }}</td>
+            <td>{{ alumno[7] }}</td>
+            <td>{{ alumno[11] }}</td>
+            <td>{{ alumno[12] }}</td>
+            <td>{{ alumno[14] }}</td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+    <br>
+
+    <a href="/">Volver</a>
+
+</div>
+
+</body>
+</html>

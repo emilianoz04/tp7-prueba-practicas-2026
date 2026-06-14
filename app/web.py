@@ -18,6 +18,30 @@ ARCHIVO = "data/alumnos.txt"
 def index():
     return render_template("index.html")
 
+@app.route("/filtrar")
+def filtrar():
+
+    registros = []
+
+    if os.path.exists(ARCHIVO):
+
+        with open(
+            ARCHIVO,
+            "r",
+            encoding="utf-8"
+        ) as f:
+
+            for linea in f:
+
+                datos = linea.strip().split("|")
+
+                registros.append(datos)
+
+    return render_template(
+        "filtrar.html",
+        registros=registros
+    )
+
 
 @app.route("/guardar", methods=["POST"])
 def guardar():
