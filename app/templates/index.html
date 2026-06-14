@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Curso</title>
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- ICONOS -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- MENSAJES -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        <div class="alert-content">
+                            <span>{{ message }}</span>
+                            <button
+                                type="button"
+                                class="close-btn"
+                                onclick="this.parentElement.parentElement.style.display='none'">
+                                ×
+                            </button>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <!-- HEADER -->
+        <div class="top">
+            <div class="icon-box">
+                <i class="fa-solid fa-pen-to-square"></i>
+            </div>
+            <div>
+                <h1>Registro de Curso de Idiomas</h1>
+                <p>Complete el formulario de inscripción</p>
+            </div>
+        </div>
+        <form action="/guardar" method="POST">
+            <!-- DATOS PERSONALES -->
+            <section class="card">
+                <h2 class="personal">
+                    <i class="fa-regular fa-user"></i>
+                    Datos personales
+                </h2>
+                <div class="grid-2">
+                    <div class="field">
+                        <label>Nombre</label>
+                        <input
+                            type="text"
+                            name="nombre"
+                            placeholder="Ingrese su nombre"
+                            required>
+                    </div>
+                    <div class="field">
+                        <label>Apellido</label>
+                        <input
+                            type="text"
+                            name="apellido"
+                            placeholder="Ingrese su apellido"
+                            required>
+                    </div>
+                    <div class="field">
+                        <label>DNI</label>
+                        <input
+                            type="text"
+                            name="dni"
+                            placeholder="Ingrese su DNI"
+                            required>
+                    </div>
+                    <div class="field">
+                        <label>Edad</label>
+                        <input
+                            type="number"
+                            name="edad"
+                            placeholder="Ingrese su edad"
+                            required>
+                    </div>
+                    <div class="field">
+                        <label>Fecha de nacimiento</label>
+                        <input
+                            type="date"
+                            name="fecha_nacimiento"
+                            required>
+                    </div>
+                    <div class="field">
+                        <label>Género</label>
+                        <select name="genero" required>
+                            <option value="" disabled selected hidden>
+                                Ej: Masculino
+                            </option>
+                            <option value="Masculino">
+                                Masculino
+                            </option>
+                            <option value="Femenino">
+                                Femenino
+                            </option>
+                            <option value="Otro">
+                                Otro
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field mt">
+                    <label>Nacionalidad</label>
+                    <input
+                        type="text"
+                        name="nacionalidad"
+                        placeholder="Ingrese su nacionalidad"
+                        required>
+                </div>
+            </section>
+            <!-- CONTACTO -->
+            <section class="card">
+                <h2 class="contacto">
+                    <i class="fa-solid fa-phone"></i>
+                    Contacto
+                </h2>
+                <div class="grid-2">
+                    <div class="field">
+                        <label>Email</label>
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder="Ingrese su email"
+                            required>
+                    </div>
+                    <div class="field">
+                        <label>Teléfono</label>
+                        <input
+                            type="text"
+                            name="telefono"
+                            placeholder="Ingrese su teléfono"
+                            required>
+                    </div>
+                </div>
+                <div class="grid-address">
+                    <div class="field">
+                        <label>Dirección</label>
+                        <input
+                            type="text"
+                            name="direccion"
+                            placeholder="Ingrese su dirección"
+                            required>
+                    </div>
+                    <div class="field">
+                        <label>Ciudad</label>
+                        <input
+                            type="text"
+                            name="ciudad"
+                            placeholder="Ingrese su ciudad"
+                            required>
+                    </div>
+                </div>
+            </section>
+            <!-- DATOS DEL CURSO -->
+            <section class="card">
+                <h2 class="curso">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    Datos del curso
+                </h2>
+                <div class="grid-2">
+                    <div class="field">
+                        <label>Idioma elegido</label>
+                        <input
+                            type="text"
+                            name="idioma"
+                            placeholder="Ej: Inglés"
+                            required>
+                    </div>
+                    <div class="field">
+                        <label>Nivel</label>
+                        <select name="nivel" required>
+                            <option value="" disabled selected hidden>
+                                Ej: A1
+                            </option>
+                            <option>A1</option>
+                            <option>A2</option>
+                            <option>B1</option>
+                            <option>B2</option>
+                            <option>C1</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label>Modalidad</label>
+                        <select name="modalidad" required>
+                            <option value="" disabled selected hidden>
+                                Ej: Virtual
+                            </option>
+                            <option>Virtual</option>
+                            <option>Presencial</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label>Turno</label>
+                        <select name="turno" required>
+                            <option value="" disabled selected hidden>
+                                Ej: Tarde
+                            </option>
+                            <option>Mañana</option>
+                            <option>Tarde</option>
+                            <option>Noche</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="grid-2">
+                    <div class="field">
+                        <label>Días de cursada</label>
+                        <select name="dias_cursada" required>
+                            <option value="" disabled selected hidden>
+                                Seleccione los días
+                            </option>
+                            <option value="Lunes y Miércoles">
+                                Lunes y Miércoles
+                            </option>
+                            <option value="Martes y Jueves">
+                                Martes y Jueves
+                            </option>
+                            <option value="Viernes y Sábados">
+                                Viernes y Sábados
+                            </option>
+                            <option value="Lunes, Miércoles y Viernes">
+                                Lunes, Miércoles y Viernes
+                            </option>
+                            <option value="Sábados">
+                                Solo Sábados
+                            </option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label>Horario</label>
+                        <select name="horario" required>
+                            <option value="" disabled selected hidden>
+                                Seleccione un horario
+                            </option>
+                            <!-- MAÑANA -->
+                            <option value="08:00 - 10:00">
+                                Mañana | 08:00 hs a 10:00 hs
+                            </option>
+                            <option value="10:00 - 12:00">
+                                Mañana | 10:00 hs a 12:00 hs
+                            </option>
+                            <!-- TARDE -->
+                            <option value="14:00 - 16:00">
+                                Tarde | 14:00 hs a 16:00 hs
+                            </option>
+                            <option value="16:00 - 18:00">
+                                Tarde | 16:00 hs a 18:00 hs
+                            </option>
+                            <!-- NOCHE -->
+                            <option value="18:00 - 20:00">
+                                Noche | 18:00 hs a 20:00 hs
+                            </option>
+                            <option value="20:00 - 22:00">
+                                Noche | 20:00 hs a 22:00 hs
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+            <!-- BOTONES -->
+            <div class="buttons">
+                <button
+                    type="submit"
+                    class="btn-primary">
+                    <i class="fa-regular fa-paper-plane"></i>
+                    Registrar inscripción
+                </button>
+                <button
+                    type="reset"
+                    class="btn-secondary">
+                    <i class="fa-regular fa-trash-can"></i>
+                    Limpiar
+                </button>
+            </div>
+        </form>
+    </div>
+    <!-- AUTO CERRAR ALERTAS -->
+    <script>
+        setTimeout(() => {
+            const alerts = document.querySelectorAll(".alert");
+            alerts.forEach(alert => {
+                alert.style.opacity = "0";
+                setTimeout(() => {
+                    alert.remove();
+                }, 500);
+            });
+        }, 4000);
+    </script>
+</body>
+</html>

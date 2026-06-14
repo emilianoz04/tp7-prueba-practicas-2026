@@ -1,0 +1,14 @@
+services:
+  python_app:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: app_python
+    command: python web.py
+    ports:
+      - "${APP_PORT}:5000"
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
