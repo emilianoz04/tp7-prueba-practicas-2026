@@ -1,0 +1,1 @@
+Juan|Perez|45123456|20|2006-03-15|Masculino|Argentina|juan.perez@gmail.com|1123456789|avenida siempreviva 742|Buenos Aires|Ingles|B1|Virtual|Tarde|Martes y Jueves|14:00 - 16:00
